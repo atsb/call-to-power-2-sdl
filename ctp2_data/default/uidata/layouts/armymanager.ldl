@@ -1,0 +1,301 @@
+#######################################
+# File: armymanager.ldl
+# Last Access: Tue May 02 14:21:33 2000
+#######################################
+
+##-----------------------------------##
+##             Templates             ##
+##-----------------------------------##
+AM_UNIT_ICON:CTP2_SWITCH {
+	int    widthpix   57
+	int    heightpix  44
+	int    beveltype  1
+	int    bevelwidth 2
+
+	string imageblttype "stretch"
+
+	string pattern "uptg20e.tga"
+	string image0  "upic15.tga"
+	string image1  "upic15.tga"
+
+	UnitHealth:CTP2_STATIC_BASE {
+		int xpix      2
+		int ypix      37
+		int widthpix  52
+		int heightpix 1
+	}
+}
+
+AM_TEXT_FONT:CTP2_STANDARD_FONT {
+}
+
+AM_LIST_ITEM_FONT:CTP2_STANDARD_FONT {
+}
+
+
+##-----------------------------------##
+##                Data               ##
+##-----------------------------------##
+ArmyManager:CTP2_DIALOG_WINDOW {
+	string title     "str_ldl_ArmyManagementTitle"
+	int    xpix      200
+	int    ypix      30
+	int    widthpix  800
+	int    heightpix 384
+
+	ArmiesLabel:CTP2_STATIC_BASE:AM_TEXT_FONT {
+		int xpix      80
+		int ypix      45
+		int widthpix  80
+		int heightpix 20
+
+		string pattern "uptg20e.tga"
+		string just    "left"
+		string text    "str_ldl_Armies"
+	}
+	ArmiesList:CTP2_LISTBOX {
+		int xpix      70
+		int ypix      75
+		int widthpix  140
+		int heightpix 188
+
+		bool alwaysranger false
+		rangery {
+		}
+	}
+	Separator {
+		string objecttype "ctp2_static"
+
+		int xpix      232
+		int ypix      32
+		int widthpix  2
+		int heightpix 315
+
+		# Bevel for groove effect.
+		int beveltype  1
+		int bevelwidth 2
+
+		bool mouseblind true
+	}
+	ArmyName:CTP2_TEXT_FIELD {
+		int xpix      252
+		int ypix      53
+		int widthpix  171
+		int heightpix 20
+	}
+	InArmyBox {
+		string objecttype "ctp2_static"
+
+		int xpix      250
+		int ypix      88
+		int widthpix  175
+		int heightpix 180
+
+		int bevelwidth 1
+
+		Unit0:AM_UNIT_ICON {
+			int xpix 2
+			int ypix 2
+		}
+		Unit1:AM_UNIT_ICON {
+			int xpix 59
+			int ypix 2
+		}
+		Unit2:AM_UNIT_ICON {
+			int xpix 116
+			int ypix 2
+		}
+		Unit3:AM_UNIT_ICON {
+			int xpix 2
+			int ypix 46
+		}
+		Unit4:AM_UNIT_ICON {
+			int xpix 59
+			int ypix 46
+		}
+		Unit5:AM_UNIT_ICON {
+			int xpix 116
+			int ypix 46
+		}
+		Unit6:AM_UNIT_ICON {
+			int xpix 2
+			int ypix 90
+		}
+		Unit7:AM_UNIT_ICON {
+			int xpix 59
+			int ypix 90
+		}
+		Unit8:AM_UNIT_ICON {
+			int xpix 116
+			int ypix 90
+		}
+		Unit9:AM_UNIT_ICON {
+			int xpix 2
+			int ypix 134
+		}
+		Unit10:AM_UNIT_ICON {
+			int xpix 59
+			int ypix 134
+		}
+		Unit11:AM_UNIT_ICON {
+			int xpix 116
+			int ypix 134
+		}
+	}
+	AddButton:CTP2_GENERIC_SIZABLE_TEXT_BUTTON {
+		int xpix      440
+		int ypix      100
+		int widthpix  100
+		int heightpix 0
+
+		string text       "str_ldl_Add"
+		string statustext "STATUSBAR_ARMYMAN_ADD_BUTTON"
+	}
+	AddAllButton:CTP2_GENERIC_SIZABLE_TEXT_BUTTON {
+		int xpix      440
+		int ypix      125
+		int widthpix  100
+		int heightpix 0
+
+		string text       "str_ldl_AddAll"
+		string statustext "STATUSBAR_ARMYMAN_ADD_ALL_BUTTON"
+	}
+	RemoveButton:CTP2_GENERIC_SIZABLE_TEXT_BUTTON {
+		int xpix      440
+		int ypix      160
+		int widthpix  100
+		int heightpix 0
+
+		string text       "str_ldl_Remove"
+		string statustext "STATUSBAR_ARMYMAN_REMOVE_BUTTON"
+	}
+	RemoveAllButton:CTP2_GENERIC_SIZABLE_TEXT_BUTTON {
+		int xpix      440
+		int ypix      185
+		int widthpix  100
+		int heightpix 0
+
+		string text       "str_ldl_RemoveAll"
+		string statustext "STATUSBAR_ARMYMAN_REMOVE_ALL_BUTTON"
+	}
+	OutOfArmyLabel:CTP2_STATIC_BASE:AM_TEXT_FONT {
+		int xpix      565
+		int ypix      60
+		int widthpix  116
+		int heightpix 20
+
+		string pattern "uptg20e.tga"
+		string just    "left"
+		string text    "str_ldl_SingleUnits"
+	}
+	OutOfArmyBox {
+		string objecttype "ctp2_Static"
+
+		int xpix      555
+		int ypix      85
+		int widthpix  175
+		int heightpix 180
+
+		int	bevelwidth 1
+
+		Unit0:AM_UNIT_ICON {
+			int xpix 2
+			int ypix 2
+		}
+		Unit1:AM_UNIT_ICON {
+			int xpix 59
+			int ypix 2
+		}
+		Unit2:AM_UNIT_ICON {
+			int xpix 116
+			int ypix 2
+		}
+		Unit3:AM_UNIT_ICON {
+			int xpix 2
+			int ypix 46
+		}
+		Unit4:AM_UNIT_ICON {
+			int xpix 59
+			int ypix 46
+		}
+		Unit5:AM_UNIT_ICON {
+			int xpix 116
+			int ypix 46
+		}
+		Unit6:AM_UNIT_ICON {
+			int xpix 2
+			int ypix 90
+		}
+		Unit7:AM_UNIT_ICON {
+			int xpix 59
+			int ypix 90
+		}
+		Unit8:AM_UNIT_ICON {
+			int xpix 116
+			int ypix 90
+		}
+		Unit9:AM_UNIT_ICON {
+			int xpix 2
+			int ypix 134
+		}
+		Unit10:AM_UNIT_ICON {
+			int xpix 59
+			int ypix 134
+		}
+		Unit11:AM_UNIT_ICON {
+			int xpix 116
+			int ypix 134
+		}
+	}
+	NewArmyButton:CTP2_BUTTON_SMALL {
+		int xpix      75
+		int ypix      280
+		int widthpix  130
+		int heightpix 24
+
+		string text       "str_ldl_NewArmy"
+		string statustext "STATUSBAR_ARMYMAN_NEW_ARMY_BUTTON"
+	}
+
+	CloseButton:CTP2_STANDARD_CLOSE {
+		string statustext "STATUSBAR_ARMYMAN_CLOSE_BUTTON"
+
+		int xpix 676
+	}
+
+	Background:CTP2_DIALOG_BG {
+		int    widthpix 800
+		string image00  "uptg21a.tga"
+		string image02  "uptg21c.tga"
+		string image03  "uptg21d.tga"
+		string image05  "uptg21f.tga"
+	}
+}
+
+ArmyManagerItem:CTP2_LIST_ITEM {
+	int xpix      14
+	int widthpix  60
+	int heightpix 18
+	box:CTP2_STATIC_BASE {
+		name:CTP2_STATIC_BASE {
+			int xpix      8
+			int ypix      0
+			int widthpix  120
+			int heightpix 18
+
+			string just "left"
+			bool vertcenter true
+		}
+		number:CTP2_STATIC_BASE {
+			int xpix      125
+			int ypix      0
+			int widthpix  10
+			int heightpix 18
+
+			string just "right"
+			bool vertcenter true
+		}
+	}
+}
+
+$

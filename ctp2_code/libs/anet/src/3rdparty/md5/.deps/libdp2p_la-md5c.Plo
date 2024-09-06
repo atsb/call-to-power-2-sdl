@@ -1,0 +1,6 @@
+../../3rdparty/md5/libdp2p_la-md5c.lo: ../../3rdparty/md5/md5c.c \
+ /usr/include/stdc-predef.h ../../3rdparty/md5/global.h \
+ ../../3rdparty/md5/md5.h
+/usr/include/stdc-predef.h:
+../../3rdparty/md5/global.h:
+../../3rdparty/md5/md5.h:

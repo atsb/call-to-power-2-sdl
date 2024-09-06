@@ -1,0 +1,80 @@
+#----------------------------------------------------------------------------
+#
+# Project      : Call To Power 2
+# File type    : String text file
+# Description  : Contains feat messages (Spanish)
+# Id           : $Id:$
+#
+#----------------------------------------------------------------------------
+#
+# Disclaimer
+#
+# THIS FILE IS NOT GENERATED OR SUPPORTED BY ACTIVISION.
+#
+# This material has been developed at apolyton.net by the Apolyton CtP2 
+# Source Code Project. Contact the authors at ctp2source@apolyton.net.
+#
+#----------------------------------------------------------------------------
+#
+# Remarks
+#
+# - This file contains all the feat message strings.
+#   It contains nothing else.
+# - The order of the strings has been synchronized in the English, French, 
+#   German, Italian and Spanish version. This has not been done for the 
+#   Japanese version, since that file is missing from the CTP2 source 
+#   code project.
+# - If you add new strings make sure that you add them at the same location
+#   in every language version you have.
+# - For easy comparison between the languages make sure that the number
+#   of lines in each language file version is the same and that also the
+#   comments are at the same place.
+# - Keep also the indentation the same.
+# - You may add comments after the last line of strings that are specific to 
+#   one language only.
+#
+#----------------------------------------------------------------------------
+#
+# Modifications from the original Activision code:
+#
+# - None
+#
+#----------------------------------------------------------------------------
+
+## FEATS OF WONDER STRINGS
+
+FEAT_ACCOMPISHED_TITLE		"PROEZA DE MARAVILLA"
+
+## ADVANCE-RELATED FEATS
+FEAT_GOT_CONCRETE		"¡Enhorabuena! ¡Tu nación es la primera en descubrir el hormigón! La facilidad de uso del hormigón y su coste reducido lo convierten en un material de construcción ideal. ¡Durante los próximos {FeatDB(Value[0]).Duration} turnos, tu volumen de producción aumentará en un {FeatDB(Value[0]).EffectIncreaseProduction}%!" 
+FEAT_GOT_GUNPOWDER		"¡Enhorabuena! Eres el primero en descubrir la pólvora. Éste es un adelanto significativo en el terreno de las armas y las demás naciones lo tendrán más difícil a la hora de defenderse frente a ti. Durante los próximos {FeatDB(Value[0]).Duration} turnos, los muros de las ciudades de otras naciones serán menos efectivos en su defensa frente a tus unidades."
+FEAT_GOT_MASS_PRODUCTION	"¡Enhorabuena! Tu nación es la primera en descubrir la producción en cadena. El funcionamiento de tu producción podrá ahora sacar partido de las líneas de montaje, las cintas transportadoras y la mano de obra especializada. ¡Durante los próximos {FeatDB(Value[0]).Duration} turnos, tu volumen de producción aumentará en un {FeatDB(Value[0]).EffectIncreaseProduction}%!"
+FEAT_GOT_COMPUTER		"¡Enhorabuena! Tu nación es la primera en descubrir el adelanto del ordenador. Tus centros de investigación podrán ahora manejar cifras más elevadas, llevar a cabo más experimentos y trabajar de forma más eficiente. ¡Durante los próximos {FeatDB(Value[0]).Duration} turnos, tu producción científica aumentará en un {FeatDB(Value[0]).EffectIncreaseScience}%!" 
+FEAT_GOT_ROBOTICS		"¡Enhorabuena! Tu nación es la primera en descubrir la robótica. Gracias al incremento de la eficiencia y la productividad aportada por estos operarios no humanos, ¡durante los próximos {FeatDB(Value[0]).Duration} turnos, tu volumen de producción aumentará en un {FeatDB(Value[0]).EffectIncreaseProduction}%!" 
+FEAT_GOT_LIFE_EXTENSION		"¡Enhorabuena! Tu nación es la primera en descubrir la prolongación de la vida. ¡Ahora tu pueblo alcanza virtualmente la inmortalidad al cambiar sus viejos cuerpos decrépitos por otros más jóvenes y más sanos! Durante los próximos {FeatDB(Value[0]).Duration} turnos, tu nación recibirá una bonificación en felicidad de {FeatDB(Value[0]).EffectIncreaseHappiness}." 
+
+## CONSTRUCTION-RELATED FEATS
+
+FEAT_BUILT_THEATERS		"Has construido muchos cines por todo tu imperio y las obras y películas de tu pueblo están logrando el reconocimiento internacional. Durante los próximos {FeatDB(Value[0]).Duration} turnos tu nación recibirá una bonificación en felicidad de {FeatDB(Value[0]).EffectIncreaseHappiness} que refleja su orgullo por su legado cultural."
+FEAT_BUILT_BROKERAGES		"Has construido muchas agencias de corredores de bolsa consolidando tu posición como una potencia económica mundial. Comerciantes y banqueros de todo el mundo consideran a tu nación con mucha estima y admiración. Tu nación obtendrá una bonificación de +{FeatDB(Value[0]).EffectIncreaseCommerce} oro durante los próximos {FeatDB(Value[0]).Duration} turnos."
+FEAT_BUILT_INTERNET		"Has construido centros de datos en varias de tus ciudades, comunicando instalaciones militares, universidades y centros de investigación privados mediante una red nacional de superordenadores de alta velocidad. Durante los próximos {FeatDB(Value[0]).Duration} turnos, tu producción científica aumentará en un {FeatDB(Value[0]).EffectIncreaseScience}%."
+FEAT_BUILT_SYNDICATE		"Has construido varias mejoras de televisión, creando el primer gran grupo de cadenas de televisión. El público tiene ahora en la televisión su primera fuente de información y entretenimiento. Durante los próximos {FeatDB(Value[0]).Duration} turnos, tu nación recibirá una bonificación en felicidad de {FeatDB(Value[0]).EffectIncreaseHappiness}." 
+FEAT_BUILT_ORBITAL_LABS		"Has creado una red de laboratorios orbitales, así como un colectivo de investigación científica de primera fila mundial. Gracias a tu sabia gestión de los programas científicos de tu nación, durante los próximos {FeatDB(Value[0]).Duration} turnos, tu nación obtendrá una bonificación en ciencia de +{FeatDB(Value[0]).EffectIncreaseScience}." 
+
+## ACTION-RELATED FEATS
+FEAT_SAILED_AROUND_THE_WORLD	"¡Has logrado dar la vuelta al mundo en barco! Tu experta armada conoce muy bien los mares y dispone de mapas precisos de muchas rutas marinas. En consecuencia, todas tus unidades navales gozarán de un aumento en sus desplazamientos de +{FeatDB(Value[0]).EffectBoatMovement} durante los próximos {FeatDB(Value[0]).Duration} turnos." 
+FEAT_CONQUERED_BY_FORCE		"¡Eres todo un conquistador! ¡A través de proezas militares, agallas y determinación has conquistado una poderosa nación!" 
+FEAT_RECAPTURED_CITY		"¡Has reconquistado una ciudad que en otros tiempos era parte de tu imperio! Al reclamar lo que un día fue tuyo, se ha levantado el ánimo de tu pueblo y les has dado esperanzas frente a agresiones extranjeras. Habrá un incremento de +{FeatDB(Value[0]).EffectIncreaseHappiness} en la felicidad de todo tu imperio durante los próximos {FeatDB(Value[0]).Duration} turnos." 
+
+#RELIGION FEATS
+FEAT_GOT_JUDAISM	"Moses had lead God's chosen people on a exodus to find a holy land!"  
+FEAT_GOT_CHRISTIANITY	"Disciples of a martyr called Jesus Christ have begun preaching a gospel!"  
+FEAT_GOT_ISLAM		"Muhammed has begun teaching the word of Allah!"  
+FEAT_GOT_HINDU		"Hinduism has grown rapidly among your people and is reaching the far corners of the planet!"  
+FEAT_GOT_BUDDHA		"The wisdom of Buddha has spread throughout beyond your empire!"
+FEAT_GOT_EGYPT		"You are seen as a living god!  This is part of the Apolyton Edition example of how religion can be added to the game. No bonuses will be given by the wonder, but the wonder will add a religious shrine to each of your cities and display the religion icon. With Theology you will be able to build clerics of that religion and spread it to other cities."  
+FEAT_GOT_ZOROASTER	"Zoroaster is preaching in our lands! This is part ofthe Apolyton Edition example of how religion can be added to the game. No bonuses will be given by the wonder, but the wonder will add a religious shrine to each of your cities and display the religion icon. With Theology you will be able to build clerics of that religion and spread it to other cities."  
+FEAT_GOT_EGYPT2		"The first civilization that builds the Pharoah shrine wonder will be seen as a living god!  This is part ofthe Apolyton Edition sample of how religion can be added to the game. No bonuses will be given to wonder. But thewonder will add a religious shrine to each of your cities and display the religion icon. With Theology you will be able to build clerics of that religion and spread it to other cities."  
+FEAT_GOT_ZOROASTER2	"The first civilization that builds the Zoroaster shrine wonder will be seen as a living god!  This is part ofthe Apolyton Edition sample of how religion can be added to the game. No bonuses will be given to wonder. But thewonder will add a religious shrine to each of your cities and display the religion icon. With Theology you will be able to build clerics of that religion and spread it to other cities."  
+
+

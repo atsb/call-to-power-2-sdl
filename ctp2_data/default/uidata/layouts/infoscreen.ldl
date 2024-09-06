@@ -1,0 +1,409 @@
+#########################
+# Info Window LDL Script
+#########################
+
+template SCORE_COLUMN:CTP2_STANDARD_FONT {
+	string objecttype "ctp2_Static"
+	int heightpix 20
+}
+
+template infoscreen_iconinfobuttons : CTP2_BUTTON_ICONIC {
+	int widthpix	16
+	int heightpix	16
+
+	int bevelwidth	0
+	int beveltype	0
+
+	string imagebltflag	"chromakey"
+}
+
+ScoreElement:CTP2_LIST_ITEM {
+	int widthpix 492
+	int heightpix 20
+	Foo : SCORE_COLUMN {
+		int widthpix 10
+	}
+	Label : SCORE_COLUMN {
+		int widthpix 170
+		string just "left"
+	}
+	Number: SCORE_COLUMN {
+		int		widthpix	140
+		string just "right"
+	}
+	CombinedValue : SCORE_COLUMN {
+		int		widthpix	140
+		string just "right"
+	}
+	Bar : SCORE_COLUMN {
+		int widthpix 10
+	}
+}
+
+template SCORE_GRAPHIC:CTP2_STATIC_GROUP {
+	Label:CTP2_STATIC_BACKGROUND {
+		int		ypix		2
+	}
+
+	Value:CTP2_GENERIC_TEXT_DISPLAY_14 {
+		int		xpix		70
+		int		widthpix	70
+	}
+}
+
+Breakdown:CTP2_STATIC_GROUP {
+	int		xpix		35
+	int		ypix		62
+	Label:CTP2_STATIC_BACKGROUND {
+		int		ypix	2
+		string	text	"str_ldl_SCORE_BREAKDOWN"
+	}
+}
+
+###################
+#
+# RANKING TEMPLATES
+#
+
+# Rank graph selection.
+template RANKING_PULLDOWN_TOGGLE:CTP2_STATIC_GROUP {
+	# Size
+	int		widthpix		400
+	int		heightpix		29
+
+	# Pulldown.
+	Pulldown:CTP2_DROPDOWN {
+		# Location.
+		int		xpix		24
+		int		ypix		0
+		int		widthpix	376
+		int		heightpix	29
+		bool	inverted	false
+	}
+}
+
+# Item type for Ranking type pulldown.
+RankingListItem:CTP2_LIST_ITEM {
+	# Size.
+	int	widthpix	376
+	int heightpix	22
+
+	Label:CTP2_STATIC_BACKGROUND {
+		# Location.
+		int	xpix		0
+
+		# Size.
+		int	widthpix	376
+		int heightpix	22
+
+		# Left justify.
+		string 	just 		"center"
+		bool	vertcenter	true
+	}
+}
+
+#
+# RANKING TEMPLATES
+#
+###################
+
+# Domestic Management dialog definition.
+# Information/Statistics dialog definition.
+InfoDialog:CTP2_3TAB_DIALOG_WINDOW {
+	# Title string.
+	string	title	"str_ldl_INFORMATION_DIALOG_TITLE"
+
+	# Close button.
+	CloseButton:CTP2_GENERIC_SIZABLE_TEXT_BUTTON {
+		# Location
+		int		xpix		388
+		int		ypix		354
+		int		widthpix	136
+		# Label
+		string	text	"str_ldl_CLOSE_BUTTON"
+		string  shortcut "ESC"
+	}
+
+	# Tabs...
+	TabGroup {
+		Tab1 {
+			TabButton {
+				string	text	"str_ldl_SCORE_TAB_TITLE"
+			}
+
+			TabPanel {
+				Difficulty:SCORE_GRAPHIC {
+					int xpix 18
+					int ypix 5
+					Label {
+						string text "str_ldl_SCORE_DIFFICULTY"
+					}
+				}
+				Rank:SCORE_GRAPHIC {
+					int xpix 190
+					int ypix 5
+					Label {
+						string text "str_ldl_SCORE_YOUR_RANK"
+					}
+				}
+				Total:SCORE_GRAPHIC {
+					int xpix 351
+					int ypix 5
+					Label {
+						string text "str_ldl_SCORE_YOUR_SCORE"
+					}
+				}
+
+				List:CTP2_LISTBOX {
+					int xpix      22
+					int ypix      54
+					int widthpix  450
+					int heightpix 220
+					header {
+						switch0:CTP2_STANDARD_FONT {
+							int	widthpix	10
+							int	heightpix	20
+							string pattern "uptg04e.tga"
+							int bevelwidth 	1
+						}
+						switch1:CTP2_STANDARD_FONT {
+							int	widthpix	170
+							int	heightpix	20
+							string pattern "uptg04e.tga"
+							string text "str_ldl_SCORE_BREAKDOWN"
+							int bevelwidth 	1
+						}
+						switch2:CTP2_STANDARD_FONT {
+							int	widthpix	140
+							int	heightpix	20
+							string pattern "uptg04e.tga"
+							int bevelwidth 	1
+							string text "str_ldl_SCORE_VALUE"
+						}
+						switch3:CTP2_STANDARD_FONT {
+							int	widthpix	117
+							int	heightpix	20
+
+							string pattern "uptg04e.tga"
+							int bevelwidth 	1
+							string text "str_ldl_SCORE_TOTAL"
+						}
+						switch4:CTP2_STANDARD_FONT {
+							int	widthpix	10
+							int	heightpix	20
+							string pattern "uptg04e.tga"
+							int bevelwidth 	1
+						}
+					}
+				}
+			}
+		}
+
+		#
+		# Start wonder tab
+		#
+		Tab2 {
+			TabButton {
+				string	text	"str_ldl_INFO_WONDER_TAB"
+			}
+			TabPanel {
+				List:CTP2_LISTBOX {
+					int xpix      22
+					int ypix      34
+					int widthpix  450
+					int heightpix 240
+
+					bool alwaysranger true
+
+					header {
+						switch0:CTP2_STANDARD_FONT {
+							int widthpix 160
+							int heightpix 20
+							string pattern "uptg04e.tga"
+							int bevelwidth 1
+							string text "str_ldl_InfoScreenWonder"
+						}
+						switch1:CTP2_STANDARD_FONT {
+							int widthpix  60
+							int heightpix 20
+
+							string pattern "uptg04e.tga"
+							int bevelwidth 1
+							string text "str_ldl_InfoScreenYear"
+						}
+						switch2:CTP2_STANDARD_FONT {
+							int widthpix  110
+							int heightpix 20
+
+							string pattern "uptg04e.tga"
+							int bevelwidth 1
+							string text "str_ldl_InfoScreenCity"
+						}
+						switch3:CTP2_STANDARD_FONT {
+							int widthpix  100
+							int heightpix 20
+
+							string pattern "uptg04e.tga"
+							int bevelwidth 1
+							string text "str_ldl_InfoScreenPlayer"
+						}
+					}
+				}
+			}
+		}
+		#
+		# End Wonder tab
+		#
+
+		########################################################################
+		# Start Ranking Tab...
+		########################################################################
+		Tab3 {
+			TabButton {
+				string	text	"str_ldl_INFO_RANKING_TAB"
+			}
+			TabPanel {
+				# Rank Label
+				RankLabel:CTP2_STATIC_BACKGROUND {
+					# Location.
+					int xpix 36
+					int ypix 13
+					# Name.
+					string just "left"
+					string text "str_ldl_RANKING_RANK"
+				} # RankLabel
+
+				# Governor box.
+				RankSelect:RANKING_PULLDOWN_TOGGLE {
+					# Location.
+					int xpix 64
+					int ypix 10
+				} # RankSelect
+
+				# LineOrZeroSum button.
+				LineOrZeroSum:CTP2_GENERIC_SIZABLE_TEXT_BUTTON {
+					# Location
+					int xpix     30
+					int ypix     255
+					int widthpix 136
+
+					# Label
+					string text "str_ldl_LINE_BUTTON"
+				} # LineOrZeroSum
+
+				# The graph
+				InfoGraph {
+					int xpix      13
+					int ypix      45
+					int widthpix  300
+					int heightpix 200
+
+					# Runtime type.
+					string objecttype "ctp2_LineGraph"
+				} # InfoGraph
+
+				# List of civilizations in game
+				InfoPlayerList:CTP2_LISTBOX {
+					int xpix      329
+					int ypix      53
+					int widthpix  144
+					int heightpix 186
+				} # InfoPlayerList
+			} # TabPanel
+		}
+		########################################################################
+		# End Ranking Tab
+		########################################################################
+
+	}
+
+	# Background image.
+	Background:CTP2_DIALOG_BG {
+		string image00 "uptg23a.tga"
+		string image02 "uptg23c.tga"
+		string image03 "uptg23d.tga"
+		string image05 "uptg23f.tga"
+	}
+}
+
+InfoPlayerListItem {
+	Civilization:CTP2_STANDARD_FONT {
+		int		xpix			0
+		int		ypix			0
+		int		widthpix		150
+		int		heightpix		20
+	}
+}
+
+InfoStrings {
+	int	numstrings	7
+
+	string string0 		"str_tbl_ldl_Positive_Points_For_Colon"
+	string string1 		"str_tbl_ldl_Total_Positive_Points_Colon"
+	string string2 		"str_tbl_ldl_Negative_Points_For_Colon"
+	string string3 		"str_tbl_ldl_Total_Negative_Points_Colon"
+	string string4 		"str_tbl_ldl_Total_Points_Colon"
+	string string5 		"str_tbl_ldl_Civ_Score_Colon"
+	string string6		"str_ldl_Turns"
+}
+
+WonderTabListItem:CTP2_LIST_ITEM
+{
+	int widthpix  450
+	int heightpix 48
+
+	Box {
+		string objecttype "ctp2_Static"
+		int widthpix  450
+		int heightpix 48
+
+		Icon:CTP2_STATIC_BASE {
+			int xpix      4
+			int ypix      4
+			int widthpix  68
+			int heightpix 42
+
+			string imageblttype "stretch"
+		}
+
+		Name:CTP2_STATIC_BASE {
+			int xpix      72
+			int ypix      0
+			int widthpix  88
+			int heightpix 48
+
+			string text "str_ldl_0"
+			bool vertcenter true
+			string just "center"
+			bool wordwrap true
+		}
+
+		Year:CTP2_STATIC_BASE {
+			int xpix      160
+			int widthpix  60
+			int heightpix 48
+
+			bool vertcenter true
+			string just "center"
+			bool wordwrap true
+		}
+
+		City:CTP2_STATIC_BASE {
+			int xpix      220
+			int widthpix  110
+			int heightpix 48
+
+			bool vertcenter true
+			string just "center"
+		}
+
+		OrigPlayer:CTP2_STATIC_BASE {
+			int xpix      330
+			int widthpix  100
+			int heightpix 48
+
+			bool vertcenter true
+			string just "center"
+		}
+	}
+}

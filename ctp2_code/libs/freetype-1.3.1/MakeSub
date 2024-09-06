@@ -1,0 +1,7 @@
+# this file is part of the FreeType project
+
+prefix = /home/wq108/ctp2
+exec_prefix = ${prefix}
+libdir = ${exec_prefix}/lib
+bindir = ${exec_prefix}/bin
+includedir = ${prefix}/include

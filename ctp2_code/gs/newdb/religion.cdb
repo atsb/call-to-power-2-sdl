@@ -1,0 +1,66 @@
+#-----------------------------------------------------------------------------
+#
+#  Project      : Call To Power 2
+#  File type    : dbgen input
+#  Description  : Religion type descriptor
+# 
+# ----------------------------------------------------------------------------
+# 
+#  Disclaimer
+# 
+#  THIS FILE IS NOT GENERATED OR SUPPORTED BY ACTIVISION.
+# 
+#  This material has been developed at apolyton.net by the Apolyton CtP2 
+#  Source Code Project. Contact the authors at ctp2source@apolyton.net.
+# 
+#-----------------------------------------------------------------------------
+# 
+#  Modifications from the original Activision code:
+# 
+#  - A new CDB based on government.cdb by E
+# 
+#-----------------------------------------------------------------------------
+Religion {
+
+Float FoodCoef
+Float GoldCoef
+Float ProductionCoef
+Float SupportCoef
+Float DefenseCoef
+
+Record Advance EnableAdvance
+Record Advance[0..5] ObsoleteAdvance
+Record CityStyle[] CultureOnly //added by E -- religion only if civ has certain citystyle
+
+Record Icon Icon
+Int GrowthRank
+Int ProductionRank
+Int ScienceRank
+Int GoldRank
+Int MilitaryRank
+Int CommerceRank
+Int PollutionRank
+Int LoyaltyRank
+Int MartialLawRank
+
+Float MaxScienceRate
+Float UnitRushModifier
+Float BuildingRushModifier
+Float WonderRushModifier
+Float EndGameRushModifier
+
+Int MaxIncomingTrade
+Int MaxOutgoingTrade
+Float InfrastructureCoefficient
+Float CapitalizationCoefficient
+Int WarDiscontentMaxUnits
+Float WarDiscontentPerUnit
+
+	Bit GLHidden
+
+	// The discovery of Religions of the same rank 
+	// trigger different advice than higher ranked ones
+	Int Rank
+	StringId SameRankAdvice
+	StringId HigherRankAdvice
+}

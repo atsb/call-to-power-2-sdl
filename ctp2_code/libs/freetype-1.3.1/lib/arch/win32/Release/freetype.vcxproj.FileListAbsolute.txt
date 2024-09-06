@@ -1,0 +1,2 @@
+C:\Users\Ad4m\Downloads\ctp2-mainfff\ctp2-main\ctp2_code\libs\freetype-1.3.1\lib\arch\win32\Release\freetype.lib
+C:\Users\Ad4m\Downloads\CallToPowerII_src_spyroviper\CallToPowerII_src_spyroviper\ctp2_code\libs\freetype-1.3.1\lib\arch\win32\Release\freetype.lib

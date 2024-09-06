@@ -1,0 +1,103 @@
+#-----------------------------------------------------------------------------
+#
+#  Project      : Call To Power 2
+#  File type    : dbgen input
+#  Description  : Civilisation type descriptor
+#  Id           : $Id:$
+#
+#----------------------------------------------------------------------------
+#
+#  Disclaimer
+#
+#  THIS FILE IS NOT GENERATED OR SUPPORTED BY ACTIVISION.
+#
+#  This material has been developed at apolyton.net by the Apolyton CtP2 
+#  Source Code Project. Contact the authors at ctp2source@apolyton.net.
+#
+#-----------------------------------------------------------------------------
+#
+#  Modifications from the original Activision code:
+#
+# - Created file. (Aug 21st 2005 Martin Gühmann)
+# - Added a lot of more stuff to implement. (E)
+# - Added outcomments about new leader db
+# - Added outcommented structs for startadvance and startunit
+#
+#-----------------------------------------------------------------------------
+
+Civilisation{
+   StringID              SingularCivName        aka CIV_SINGULAR
+   StringID              PluralCivName          aka CIV_PLURAL
+   StringID              CountryName            aka CIV_COUNTRY
+//maybe moved to new leader db
+   StringID              LeaderNameMale         aka CIV_LEADER_NAME
+   StringID              LeaderNameFemale       aka CIV_LEADER_NAME_FEMALE
+   StringID              EmissaryPhotoMale      aka CIV_EMISSARY_PHOTO
+   StringID              EmissaryPhotoFemale    = EmissaryPhotoMale
+   StringID              PersonalityDescription aka CIV_PERSONALITY_DESCRIPTION
+   Record Personality    PersonalityMale        aka CIV_PERSONALITY_MALE
+   Record Personality    PersonalityFemale      aka CIV_PERSONALITY_FEMALE
+//end leader part
+   Int                   Parchment = 0          aka CIV_PARCHMENT
+   Int                   Capital = 0
+   Bit                   IsCapital              aka CITY_IS_CAPITAL
+   Record CityStyle      CityStyle              aka CIV_CITY_STYLE
+   StringID[0..500]      CityName               aka CIV_CITY_NAME
+//new
+   Bit(Record MapIcon)   NationUnitFlag
+//   Bit(Record Leader)    Leader	
+
+// Civ Specific Bonuses
+   Int                   HappyInc             = 0
+
+
+   Int                   ProductionBonus      = 0
+   Int                   FoodBonus            = 0
+   Int                   CommerceBonus        = 0
+   Int                   ScienceBonus         = 0
+   Int                   IncreaseBoatMovement = 0
+   Int                   IncreaseHp           = 0
+
+   Bit(Float)            OffenseBonusLand
+   Bit(Float)            OffenseBonusWater
+   Bit(Float)            OffenseBonusAir
+
+
+
+// From building.cdb to add Civilisation traits
+   Bit(Float)            LowerCrime
+   Bit(Float)            LowerPeaceMovement
+   Bit(Int)              GoldPerCitizen
+   Bit(Float)            SciencePerPop
+
+// From Wonder.cdb for additional civ attributes
+   Bit(Int)              ReduceReadinessCost
+   Bit(Int)              GoldPerWaterTradeRoute
+   Bit(Int)              GoldPerTelevision
+   Bit(Int)              GoldPerInternationalTradeRoute
+   Bit                   AllBoatsDeepWater
+   Bit(Int)              DecreaseMaintenance
+   Bit                   PreventConversion
+   Bit                   ProtectFromBarbarians
+   Bit(Float)            PollutionPercent
+   Bit(Float)            PollutionAmount
+
+   
+   
+//from difficulty.cdb  - we should look into make it civilisation specific and have a modifier in the difficulty
+	//Each Civ should have a unique start advance
+   	//Struct AdvanceChance{
+	//	# Don't change in this struct anything, otherwise you break loading the old DiffDB.txt.
+	//	Record Advance StartAdvance
+	//	Int            HumanChance    # Needs to be checked
+	//	Int            AIChance       # Needs to be checked
+	//}
+
+	//Each Civ COULD have a unique start unit (scouts, settlers, special units, etc)
+	//add code to gameinit.cpp
+   	//Struct UnitChance{
+	//	Record Unit StartUnit
+	//	Int            HumanChance    
+	//	Int            AIChance       
+	//}
+}

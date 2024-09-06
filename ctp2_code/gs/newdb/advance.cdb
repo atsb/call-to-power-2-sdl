@@ -1,0 +1,91 @@
+#-----------------------------------------------------------------------------
+#
+#  Project      : Call To Power 2
+#  File type    : DbGen input
+#  Description  : Advance record definition
+# 
+# ----------------------------------------------------------------------------
+# 
+#  Disclaimer
+# 
+#  THIS FILE IS NOT GENERATED OR SUPPORTED BY ACTIVISION.
+# 
+#  This material has been developed at apolyton.net by the Apolyton CtP2 
+#  Source Code Project. Contact the authors at ctp2source@apolyton.net.
+# 
+#-----------------------------------------------------------------------------
+# 
+#  Modifications from the original Activision code:
+# 
+#  - GovernmentType - added by E; a copy of unit Government type code
+#  - ExcludesAdvance - added by E; future use; allow some advances to close off 
+#                    other branches, possibly for future ages
+#  - CultureOnly - added by E; can only research if civ has certain citystyle
+#  - NeedsCityGoodAnyCity - added by E, to require goods to research a tech
+#
+#
+#-----------------------------------------------------------------------------
+
+Advance {
+	Int Cost
+	Record Advance[0..4] Prerequisites
+	Record Advance[] Dependencies
+	Record Advance[] LeadsTo
+	Record Advance[] ExcludesAdvance //Future Use: allow some advances to close off other branches, possibly for future ages
+	Record Icon Icon
+	Record AdvanceBranch Branch
+	Record Age Age
+	Record CityStyle[] CultureOnly //added by E -- can only research if civ has certain citystyle
+	Record Government[] GovernmentType //added by E --- a copy of unit Government type code
+	Record Resource[] NeedsCityGoodAnyCity //FU
+	Record Advance[0..4] EitherPrerequisites      //FU for fluid tech tree
+
+	Bit DeepOcean
+	Bit Capitalization
+	Bit Infrastructure
+	Bit Transform
+	Bit RequiresProbeRecovery
+	Bit Genetic
+	Bit PlantNuke
+	Bit NoIndex
+	Bit Roads
+	Bit Railroads
+	Bit AlienLife
+	Bit MagLev
+	Bit Tunnels
+	// added to enable advance bonuses
+	Int        BonusHappy        = 0         // Added by E when a city has or buying a good it gets a bonus
+	Int        BonusGold         = 0
+	Int        BonusFood         = 0
+	Int        BonusProduction   = 0
+	Int        BonusScience      = 0    
+	//added for future tech option
+	Bit(Float) ProductionPercent
+	Bit(Float) FoodPercent
+	Bit(Float) CommercePercent
+	Bit(Float) SciencePercent
+	Bit GLHidden
+	Bit GoodyHutExcluded
+
+    Int PowerPoints = 0
+	Bit(Float) PollutionSizeModifier
+	Bit(Float) PollutionProductionModifier
+
+	Bit(Record Feat) TriggerFeat
+
+	Bit IsMassMedia
+	Bit EnablesGuerrillas
+
+	# advice string for why this is a key advance
+	Bit (StringId) KeyAdvanceAdvice
+}
+
+
+AdvanceBranch : Int
+
+Age {
+	Int Age
+	Int StartingRound
+	Int NeedAdvances
+	String SlicObject
+}

@@ -1,0 +1,4 @@
+../../3rdparty/d3des/libdp2_la-d3des.lo: ../../3rdparty/d3des/d3des.c \
+ /usr/include/stdc-predef.h ../../3rdparty/d3des/d3des.h
+/usr/include/stdc-predef.h:
+../../3rdparty/d3des/d3des.h:

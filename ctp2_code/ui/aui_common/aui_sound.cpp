@@ -1,0 +1,116 @@
+#include "c3.h"
+#include "aui_ui.h"
+
+#include "aui_sound.h"
+
+aui_Sound::aui_Sound(
+	AUI_ERRCODE *retval,
+	const MBCHAR * filename )
+	:
+	aui_Base()
+{
+	*retval = InitCommon ( filename );
+	Assert ( AUI_SUCCESS (*retval) );
+}
+
+aui_Sound::~aui_Sound()
+{
+	Unload();
+}
+
+AUI_ERRCODE aui_Sound::InitCommon( const MBCHAR *filename )
+{
+	m_format = NULL;
+	m_data = NULL;
+
+	AUI_ERRCODE errcode = SetFilename( filename );
+	Assert ( AUI_SUCCESS(errcode) );
+	return errcode;
+}
+
+AUI_ERRCODE aui_Sound::SetFilename( const MBCHAR *filename)
+{
+	Unload();
+
+	memset ( m_filename, '\0', sizeof( m_filename ));
+
+	if ( !filename )
+		return AUI_ERRCODE_INVALIDPARAM;
+
+#ifndef _WIN32
+	strncpy(m_filename, CI_FixName(filename), MAX_PATH);
+#else
+	strncpy(m_filename, filename, MAX_PATH);
+#endif
+
+	m_format = (aui_SoundFormat *)
+		g_ui->TheMemMap()->GetFileFormat ( m_filename );
+	Assert(m_format);
+
+	return m_format ? AUI_ERRCODE_OK : AUI_ERRCODE_MEMALLOCFAILED;
+}
+
+AUI_ERRCODE aui_Sound::Load( void )
+{
+
+	Assert ( m_format != NULL );
+	if ( !m_format ) return AUI_ERRCODE_INVALIDPARAM;
+
+	if ( m_data ) return AUI_ERRCODE_OK;
+
+	return m_format->LoadSoundData( m_filename, &m_data, &m_size );
+}
+
+AUI_ERRCODE aui_Sound::Unload( void )
+{
+	g_ui->TheMemMap()->ReleaseFileFormat(m_format);
+
+	return AUI_ERRCODE_OK;
+}
+
+AUI_ERRCODE aui_WavSoundFormat::LoadSoundData
+(
+	const MBCHAR *  filename,
+	uint8 **        wavdata,
+	size_t *        size
+)
+{
+	m_data = (uint8 *)g_ui->TheMemMap()->GetFileBits( filename, size );
+	*wavdata = m_data;
+
+	Assert( *wavdata != NULL );
+	if ( !*wavdata ) return AUI_ERRCODE_MEMALLOCFAILED;
+
+	TrimWavHeader( wavdata, size );
+
+	return AUI_ERRCODE_OK;
+}
+
+void aui_SoundFormat::ReleaseSoundData() {
+	if(m_data)
+		g_ui->TheMemMap()->ReleaseFileBits(m_data);
+}
+
+void aui_WavSoundFormat::TrimWavHeader(uint8 **wavedata, size_t *size)
+{
+	int i;
+	uint8 *data;
+	size_t raw_data_size=0;
+
+	data = *wavedata;
+	for(i=0;i<(int)*size;i++)
+	{
+		if(*(sint32 *)data == *(sint32 *)"data")
+		{
+		data += 4;
+		raw_data_size = *(sint32 *)data;
+		data += 4;
+		break;
+		}
+		else
+		data++;
+	}
+
+	*wavedata = data;
+	*size = raw_data_size;
+}

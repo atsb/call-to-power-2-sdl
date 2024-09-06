@@ -1,0 +1,615 @@
+#-----------------------------------------------------------------------------
+#
+#  Project      : Call To Power 2
+#  File type    : dbgen input
+#  Description  : Unit type descriptor
+#  Id           : $Id:$
+#
+# ----------------------------------------------------------------------------
+#
+#  Disclaimer
+#
+#  THIS FILE IS NOT GENERATED OR SUPPORTED BY ACTIVISION.
+#
+#  This material has been developed at apolyton.net by the Apolyton CtP2 
+#  Source Code Project. Contact the authors at ctp2source@apolyton.net.
+#
+#-----------------------------------------------------------------------------
+#
+#  Modifications from the original Activision code:
+#
+#  - Created file for possible Civ4 promotions (by E Aug 21st 2007)
+#  - Added VictoryEnslavementChance, VictoryEnslavementStacks, and GovernmentOnly flags (EPW, Jul 21st 2009)
+#
+#-----------------------------------------------------------------------------
+
+Unitpromotion {
+	Bits MovementType {
+		Land,
+		Sea,
+		Air,
+		Mountain,
+		Trade,
+		ShallowWater,
+		Space
+	}
+
+	#uint32 cargo_flag;
+	Bits CanCarry {
+		SmallLand,
+		MedLand,
+		LargeLand,
+
+		SmallAir,
+		MedAir,
+		LargeAir,
+		
+		SmallWater,
+		MedWater,
+		LargeWater,
+
+		SmallSpace,
+		MedSpace,
+		LargeSpace
+	}
+
+	Record Unit					AvailableUnit  //determines which unit can have
+	Record Advance              EnableAdvance
+	Record Advance[0..5]        ObsoleteAdvance
+	Record Building[] PrerequisiteBuilding  // Added by E to limit units to cities with certain buildings
+	Record Building[] ExcludedByBuilding    //to prevent some units being built
+	Record Government[] GovernmentsModified
+	Record Unit[]     UpgradeToPromotion				// Upgrade Paths, cost based on difference ShieldCost x Gold?
+	Record Unit[]     ObsoletePromotion			// If unit is available then this unit cant be built
+	Record CityStyle[] CultureOnly			// Added by E -- can only build units if civ has certain citystyle
+	Record CityStyle[] CityStyleOnly		// Added by E--can only build units at cities with certain citystyle 
+	Record Civilisation[] CivilisationOnly	// Added by E -- can only build units if player is a specific civ
+	Record Government[] GovernmentOnly      // Added by EPW(lol) -- can only build units if player is in a specific gov(doesn't kill them though)
+	Record Resource[] NeedsCityGood         // Must have good in radius of city or buying resource to build 
+	Record Resource[] NeedsCityGoodAll		// A city must have all resources listed to build unit
+	Record Resource[] NeedsCityGoodAnyCity	// must have a good in any city to build
+	Record Feat[] NeedsFeatToBuild			// Feat must have occured for unit to be built
+	Record Feat[] NeedsAnyPlayerFeatToBuild				// implemented by E
+	Record Wonder[] PrerequisiteWonder		// Added by E to limit units to cities with certain wonders
+	Record Wonder[] ExcludedByWonder		// to prevent some units being built
+
+
+	Bit(Int) MoveBonus						// Instead of specifying an imp why not define the movecost here? by E
+	Bit(Int) PWMoveCost						// FU - Deducts PW when unit moves
+	Bit(Int) MerchantGold					// FU - to allow a unit to grant gold in other territory
+	Bit      IsGreatBuilder					// FU - completes building 
+	Bit      IsGreatArtist					// FU - one day I may add culture / influence 
+
+	Record TerrainImprovement[]     AllTerrainAsImprovement // future use - like AllTerrainRoads
+	Record Unit [] ObsoleteByUnit 			// Intead of advance for later upgrade
+    Bit NonLethalBombard					// lessen bombard strengthen like old civ3
+	Bit CanBombardTiles						// allows bombarding of tile improvements
+	Bit CollateralTileDamage				// if a defender is on a tile then improvements cut too
+    Bit PrecisionStrike						// When bombing city only destroys buildings
+    Bit TargetsCivilians					// When bombing city only kills a pop
+    Bit ImmuneToHostileTerrain				// Protects units from terrain that deducts HP
+
+	Bit CanRebase							// FU to rebase CantMove units
+	Bit MultipleAttacks						// Can attack more than once in a turn (Civ3 - blitz)
+	Bit CanBeGifted							// Disbanding unit gives it to the friendly player
+	
+	Bit UpgradeAnywhere                     //Allows you to upgrade units at any location
+	Bit UpgradeDoesNotHeal                  //Units do not heal when upgraded
+
+	Bits Size {
+		Small,
+		Medium,
+		Large
+	}
+
+	Struct SuccessDeath {
+		Float Chance, DeathChance
+	}
+
+	Struct SuccessDeathEffect {
+		Float Chance, DeathChance
+		Record Sound Sound
+		Record SpecialEffect Effect
+	}
+
+	Bit LossMoveToDmgNone
+	Bit LossMoveToDmgTwo
+	Bit NoFuelThenCrash
+	Bit TransformPartial
+
+	Bit IgnoreZOC
+	Bit NoZoc
+
+	Bits CanBombard {
+		Land,
+		Air,
+		Water,
+		Space,
+		Mountain
+	}
+
+	Bit CanCounterBombard
+
+	Bit CanLiftOff
+
+	Bits Settle { 
+		Land,
+		Water,
+		Mountain,
+		Space
+	}
+	Record Unit SettleCityType
+	Int SettleSize = 1
+	Record Building[] SettleBuilding
+
+	# Int is number of turns to stay in space
+	Bit(Int) SpaceLaunch
+	Bit SpaceLand
+
+	Bit CantCaptureCity
+	Bit HasPopAndCanBuild
+	Bit IsTrader
+	Bit ExertsMartialLaw
+
+	Bit CanEntrench
+	Bit CanPatrol
+
+	Bit NeedsNoSupport
+	Bit CanExpelPop
+	Bit IsFlanker
+	Bit CanBeachAssault
+
+
+	Bits Defend {
+		Land, Air, Water, Space, Mountain	//
+	}
+
+	Bit(Float) DefendAgainstSpies
+	Bit CanBeExpelled
+	Bit CanBeSued
+	Bit AttackFromSpaceship
+	Bit CantBeAttacked
+	Bit CargoPod
+	Bit IsFoot							// Added by E for additional battle modifiers Dec-7-2005	
+	Bit IsMounted	
+	Bit IsSiege  						// Added by E for additional battle modifiers Dec-7-2005
+	Bit IsWheeled 						// Added by E for additional battle modifiers Dec-7-2005
+	Bit IsMechanized 					// Added by E for additional battle modifiers Dec-7-2005
+	Bit IsHelicopter 					// Added by E for additional battle modifiers Dec-7-2005
+	Bit IsSubmarine			
+	Bit IgnoreCityWalls	
+
+	Bit NoLandAttack
+	Bit NoSeaAttack
+	Bit NoAirAttack
+	Bit NoSpaceAttack
+	Bit NoUnderwaterAttack
+	Bit NoMountainAttack
+	Bit NoShallowWaterAttack
+
+	Bit Paratrooper
+	Bit AssistedDrops
+	Bit BonusAgainstFoot 				// Added by E for additional battle modifiers Dec-7-2005
+	Bit BonusAgainstMounted
+	Bit BonusAgainstSiege 				// Added by E for additional battle modifiers Dec-7-2005
+	Bit BonusAgainstWheeled 			// Added by E for additional battle modifiers Dec-7-2005
+	Bit BonusAgainstMechanized 			// Added by E for additional battle modifiers Dec-7-2005
+	Bit BonusAgainstHelicopter 			// Added by E for additional battle modifiers Dec-7-2005
+	Bit BonusAgainstGuerrilla 			// Added by E for additional battle modifiers Dec-13-2005
+	Bit BonusAgainstSpecialForces 		// Added by E for additional battle modifiers Dec-13-2005
+	Bit BonusAgainstSubmarine 			// Added by E for additional battle modifiers Dec-13-2005
+	Bit SingleUse
+	Bit BonusAirDefense
+
+	Bit WoodenShip
+	Bit AttackFootBonus 				// Added by E for additional battle modifiers Dec-7-2005
+	Bit AttackMountedBonus 				// Added by E for additional battle modifiers Dec-7-2005
+	Bit AttackSiegeBonus 				// Added by E for additional battle modifiers Dec-7-2005
+	Bit AttackWheeledBonus 				// Added by E for additional battle modifiers Dec-7-2005
+	Bit AttackMechanizedBonus			// Added by E for additional battle modifiers Dec-7-2005
+	Bit AttackHelicopterBonus 			// Added by E for additional battle modifiers Dec-7-2005
+	Bit AttackSpecialForcesBonus		// Added by E for additional battle modifiers Dec-13-2005
+	Bit AttackCivilianBonus 			// Added by E for additional battle modifiers Dec-13-2005
+	Bit AttackGuerrillaBonus 			// Added by E for additional battle modifiers Dec-13-2005
+	Bit AttackWoodenShipBonus
+	Bit HasAttackCityBonus	
+	Bit HasAttackBonusSubmarine
+
+	Bit(Int) ReplaceWithCargoModule
+	Bit VisibileAttacking
+
+	Bit(struct SoundAndEffect) NuclearAttack
+
+	Bit CanSue
+	Bit IsStealthy
+	Bit SeeSurfaceFromSpace
+
+	Bit EstablishEmbassy
+	Bit ThrowParty
+	Bit HearGossip
+
+##	Struct AttackAgeBonus {
+##		Record Age Age
+##		Bit Bonus
+##	}
+
+	Struct StealTechnologyData {
+		Float RandomChance
+		Float SpecificChance
+		Float DeathChance
+		Record Sound Sound
+		Record SpecialEffect Effect
+	}
+	Bit(Struct StealTechnologyData) StealTechnology
+
+	Struct InciteRevolutionData {
+		Float Chance
+		Float EliteChance
+		Float DeathChance
+		Record Sound Sound	
+		Record SpecialEffect Effect
+	}
+
+	Bit(struct InciteRevolutionData) InciteRevolution
+
+	Struct AssasinateRulerData {
+		Float Chance
+		Float EliteChance
+		Float DeathChance
+	}
+	Bit(Struct AssasinateRulerData) AssasinateRuler
+
+	Struct InvestigateReadinessData {
+		Float Chance
+		Float EliteChance
+		Float DeathChance
+	}
+
+	Bit(Struct InvestigateReadinessData) InvestigateReadiness	
+	Bit NullifyCityWalls
+
+	struct ChanceEffect {
+		Float Chance
+		Record Sound Sound
+		Record SpecialEffect Effect
+	}
+
+	Bit(Struct ChanceEffect) CreateFranchise
+
+	Struct CauseUnhappinessData {
+		Float Chance
+		Int   Timer
+		Int   Amount
+		Record Sound Sound
+		Record SpecialEffect Effect
+	}
+
+	Bit(Struct CauseUnhappinessData) CauseUnhappiness
+
+	Bit(struct SoundAndEffect) ConductHits
+	Bit(struct ChanceEffect) BioTerror
+	Bit(struct ChanceEffect) NanoTerror
+	Bit(struct ChanceEffect) Plague
+
+	Struct SlaveRaidsData {
+		Float Chance, DeathChance
+		Int Timer, Amount
+		Record Sound Sound
+		Record SpecialEffect Effect
+	}
+	Bit(Struct SlaveRaidsData) SlaveRaids
+
+	Struct SoundAndEffect {
+		Record Sound Sound
+		Record SpecialEffect Effect
+	}
+	Bit(struct SoundAndEffect) SettlerSlaveRaids
+
+	Bit(struct SoundAndEffect) SlaveUprising
+
+	Bit(struct SuccessDeathEffect) UndergroundRailway	
+	
+	Bit VictoryEnslavement
+	Bit(float) VictoryEnslavementChance
+	Bit VictoryEnslavementStacks	
+
+	Bit DefuseLandMines
+	Bit DefuseSeaMines
+	Bit DefuseXrayMines
+
+	Bit(struct SoundAndEffect) IndulgenceSales
+	Bit(struct SuccessDeathEffect) ConvertCities
+	Bit BuildXrayMines
+
+	Bit BuildWonder
+	Record Government[] GovernmentType
+	Bit NoSlaves
+	Bit CreateRift
+	Bit CanCloak
+	Bit HiddenNationality 						// future use for Civ3 like trait maybe same as Cloak?				
+	Bit SneakAttack 							// Can attack without war declared
+	Bit SneakPillage 							// Can Pillage without war declared
+	Bit SneakBombard 							// Can Bombard without war declared
+	Bit ParatrooperTransport
+	Bit CantBuild
+
+	Struct PlantNukeData {
+		Float Chance, EscapeChance
+		Record Sound Sound
+		Record SpecialEffect Effect
+	}
+	Bit(Struct PlantNukeData) PlantNuke
+
+	Bit IsTelevangelist
+	Bit(struct SoundAndEffect) CanSoothsay
+
+	Bit CanBeRustled
+	Bit(struct SoundAndEffect) CreateParks
+	
+	Bit (struct SoundAndEffect) CanInjoin
+
+	Bit WormholeProbe
+	Bit HasBonusFood
+	Bit LandCityCanBuild
+	Bit SeaCityCanBuild
+	Bit SpaceCityCanBuild
+	Bit IsSpecialForces				// EMOD
+    Bit IsPeaceKeeper				// EMOD
+	Bit IsGuerrilla  				// EMOD
+	Bit IsWorker 					// Future use -- with TerrImp flag NeedsWorker to limit certain imps or Civ3-like mods
+	Bit NotAffectedByLandMines
+	Bit InternalReserved
+
+
+	Bit DeathEffectsHappy
+	Bit EnableCarrierDefenses
+	Bit ActiveDefenseOnlyWhenCarryingEnablers
+	Bit BuildingRemovesAPop
+	Bit(Int) PopCostsToBuild				// Added for future use to deduct more than one pop for units
+	Bit Explodes
+	Bit Advertise
+	Bit CanRustle
+	Bit OnlyBuildOne
+
+	Bit CanExpel
+
+	Bit(struct SoundAndEffect) CanReform
+	Bit CanPillage
+	Bit CanPirate
+	Bit CanCaptureTile						// change ownership of tile
+	Int ReducesDefensesBonus = 0			// FU
+
+	#uint32 visibility_classes;
+	Bits VisionClass {
+		Standard,
+		Underwater,
+		Stealth,
+		UnusedBit3,
+		UnusedBit4,
+		UnusedBit5,
+		UnusedBit6,
+		UnusedBit7,
+		UnusedBit8,
+		UnusedBit9,
+		UnusedBit10,
+		UnusedBit11,
+		UnusedBit12,
+		UnusedBit13,
+		UnusedBit14,
+		UnusedBit15
+	}
+
+	#uint32 visibility_abilities;
+	Bits CanSee {
+		Standard,
+		Underwater,
+		Stealth,
+		UnusedBit3,
+		UnusedBit4,
+		UnusedBit5,
+		UnusedBit6,
+		UnusedBit7,
+		UnusedBit8,
+		UnusedBit9,
+		UnusedBit10,
+		UnusedBit11,
+		UnusedBit12,
+		UnusedBit13,
+		UnusedBit14,
+		UnusedBit15
+	}
+
+	# uint32 attackFlags;
+	Bits CanAttack {
+		Land,
+		Sea,
+		Air,
+		Mountain,
+		Trade,
+		ShallowWater,
+		Space,
+		Underwater
+	}
+			
+	Struct CargoData {
+		Int MaxCargo
+		Record Sound Load
+		Record Sound Unload
+	}
+	Bit(Struct CargoData) CargoData
+
+    Int ShieldCost
+
+	Int PowerPoints
+
+    Int MaxHP
+    Float MaxHPr = 1.0
+    Float Attack
+    Float Defense
+    Int Firepower
+	Int ZBRangeAttack
+	Float Armor
+
+    Bit(Int) BRange
+    Bit (Int) BRadius
+
+    Int VisionRange
+    Int ActiveDefenseRange
+    Bit (Int) ElectronicCombatFactor
+
+    Float MaxMovePoints
+    Int MaxFuel
+
+	Bit(Int) TransType
+
+	Bit(Int) ProbOfBombHit
+    Bit(Int) BombRounds
+
+    Int ShieldHunger
+    Int FoodHunger
+    Int GoldHunger = 0					// Add for future possibility of gold cost per turn per unit
+    Record Sprite DefaultSprite
+
+	
+	Bit(Int) LaunchPollution 
+	Bit(Int) DeathPollution 
+
+	Bit(Float) MountedBonus
+	Bit(Float) AirBonus
+	Bit(Float) WoodenShipBonus
+	Bit(Float) AttackCityBonus
+	Bit(Float) AttackBonusSubmarine
+	Bit(Float) FootBonus				// added by E for additional battle modifiers Dec-31-2005
+	Bit(Float) SiegeBonus				// added by E for additional battle modifiers Dec-31-2005
+	Bit(Float) WheeledBonus				// added by E for additional battle modifiers Dec-31-2005
+	Bit(Float) MechanizedBonus			// added by E for additional battle modifiers Dec-31-2005
+	Bit(Float) HelicopterBonus			// added by E for additional battle modifiers Dec-31-2005
+	Bit(Float) SpecialForcesBonus		// added by E for additional battle modifiers Dec-31-2005
+	Bit(Float) CivilianBonus			// added by E for additional battle modifiers Dec-31-2005
+	Bit(Float) GuerrillaBonus			// added by E for additional battle modifiers Dec-31-2005
+	Bit(Float) AgainstMountedBonus
+	Bit(Float) AirDefenseBonus
+
+	Bit(Int) CargoModule
+
+	Bit(Float) SpyVsSpy
+
+	Struct InvestigateCityData {
+		Float Chance,
+			  EliteChance,
+			  DeathChance
+	}
+	Bit(Struct InvestigateCityData) InvestigateCity
+
+	Bit(Int) BonusFood
+
+	#uint32 govs
+	#Record Government[] Govs
+
+	Bit(Int) BombardRange
+
+	struct RevolutionData {
+		Record Sound Sound
+		Record SpecialEffect Effect
+	}	
+	
+	Bit(struct RevolutionData) Revolution
+
+	Record Sound SoundSelect1			
+	Record Sound SoundSelect2			
+	Record Sound SoundMove				
+	Record Sound SoundAcknowledge		
+	Record Sound SoundCantMove			
+	Record Sound SoundAttack
+
+	Record Sound SoundWork
+	Record Sound SoundVictory
+	Record Sound SoundDeath
+	Record Sound SoundLoad
+	Record Sound SoundUnload
+
+	# This doesn't need to be here any more.
+    Record SpecialAttackInfo[0..8] SpecialAttacks
+
+	Bit(Float) CityGrowthCoefficient
+
+#	uint32 userFlags
+
+	Bits UserFlags {
+	  UF1,
+	  UF2,
+	  UF3,
+	  UF4,
+	  UF5,
+	  UF6,
+	  UF7,
+	  UF8,
+	  UF9,
+	  UF10,
+	  UF11,
+	  UF12,
+	  UF13,
+	  UF14,
+	  UF15,
+	  UF16,
+	  UF17,
+	  UF18,
+	  UF19,
+	  UF20,
+	  UF21,
+	  UF22,
+	  UF23,
+	  UF24,
+	  UF25,
+	  UF26,
+	  UF27,
+	  UF28,
+	  UF29,
+	  UF30,
+	  UF31
+	}
+
+	Record Icon DefaultIcon
+	Bit NoIndex
+	Bit (int) CheatIndex
+	StringId Description
+	Bit (StringId) Advice
+	StringId Category
+
+	Bit GLHidden
+
+	Bit CantMove
+
+	// set this flag for units that non-evil AI's should not attack
+	Bit Civilian
+
+	Bit NoBarbarian 				// Added by tombom
+	Bit GoodyHutExcluded			// Prevents Some Units from appearing by E
+	Bit CanHarvest					// Added by E to add Gold and Shields from terrain
+	Bit CantGroup 					// For future use to make solo moving units
+	Bit SpawnsBarbarians			// Entrenched unit spawns barbs in foreign territory
+	Bit CanSinkInSea				// to implement ConstDb Chance_lost_at_sea
+
+	Bit Leader						// Special "king" unit
+//Great Leader Bonuses - these flags are to empower the entire stack - Or should I just use the usual bonuses?
+	Bit(Float) ArmyMountedBonus
+	Bit(Float) ArmyAirBonus
+	Bit(Float) ArmyWoodenShipBonus
+	Bit(Float) ArmyAttackCityBonus
+	Bit(Float) ArmyAttackBonusSubmarine
+	Bit(Float) ArmyFootBonus				
+	Bit(Float) ArmySiegeBonus				
+	Bit(Float) ArmyWheeledBonus				
+	Bit(Float) ArmyMechanizedBonus			
+	Bit(Float) ArmyHelicopterBonus			
+	Bit(Float) ArmySpecialForcesBonus		
+	Bit(Float) ArmyCivilianBonus			
+	Bit(Float) ArmyGuerrillaBonus			
+	Bit(Float) ArmyAgainstMountedBonus
+	Bit(Float) ArmyAirDefenseBonus
+
+
+	#Energy Code
+	Int   EnergyHunger = 0
+	Int   ProducesEnergy = 0
+}

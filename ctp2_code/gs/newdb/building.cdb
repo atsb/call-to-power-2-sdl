@@ -1,0 +1,173 @@
+#-----------------------------------------------------------------------------
+#
+#  Project      : Call To Power 2
+#  File type    : dbgen input
+#  Description  : Building type descriptor
+#  Id           : $Id:$
+#
+#-----------------------------------------------------------------------------
+#
+#  Disclaimer
+# 
+#  THIS FILE IS NOT GENERATED OR SUPPORTED BY ACTIVISION.
+#
+#  This material has been developed at apolyton.net by the Apolyton CtP2 
+#  Source Code Project. Contact the authors at ctp2source@apolyton.net.
+#
+#-----------------------------------------------------------------------------
+#
+#  Modifications from the original Activision code:
+#
+#  - CultureOnly          : Building can only be built if city's citystyle is matched (E)
+#  - CityStyleOnly        : Building can only be built in cities with the city style in the list (E)
+#  - GovernmentType       : Building can only be built with the right government (E)
+#  - NeedsCityGood :      : Building requires a good to be built (E)
+#  - NeedsCityGoodAll     : Building requires all goods in the list to be built (E)
+#  - NeedsCityGoodAnyCity : Building requires good owned in any city of the empire (E)
+#  - EnablesGood          : Building gives good to city (E)
+#  - OnePerCiv            : Just one building allowed per civ works like Small Wonders - (E 2-14-2006)
+#  - GoldPerCity          : Gold cost per number of cities (E)
+#  - GoldPerUnit          : adds this (E)
+#  - GoldPerUnitReadiness : adds amount times number of units times readiness modifier (E)
+#  - SquaredBorderRadius  : increases city radius (E 2-28-2006)
+#  - IntBorderRadius      : Increases city radius (E 2-28-2006)
+#  - CivilisationOnly     : Building can only be built in the given civilisations (E)
+#  - NeedsFeatToBuild     : Building can only be built with the right feat (E)
+#  - TreasuryInterest     : Based on stored gold
+#  - ExcludedByWonder	  : Prevents bldgs being built in cities with wonder
+#  - PrerequisiteWonder   : Needs bldgs in city to be built
+#  - EnablesVeterans	  : Spllitinto All, Land, Sea, and Air
+#
+#-----------------------------------------------------------------------------
+
+Building {
+	# stuff every building has
+	Record Icon                 DefaultIcon
+	StringId                    Description
+	Record Advance              EnableAdvance
+	Record Advance[0..5]        ObsoleteAdvance
+	Record Building[]           PrerequisiteBuilding
+	Record Government[]         GovernmentsModified
+	Record CityStyle[]          CultureOnly              // Added by E -- can only build buildings if civ has certain citystyle
+	Record CityStyle[]          CityStyleOnly            // Added by E--can only build buildings at cities with certain citystyle 
+	Record Government[]         GovernmentType           // Added by E --- a copy of unit Government type code
+	Record Resource[]           NeedsCityGood            // By E must have good in radius of city or buying resource to build 
+	Record Resource[]           NeedsCityGoodAll         // By E a city must have all resource to build building
+	Record Resource[]           NeedsCityGoodAnyCity     // Implemented by E
+	Record Resource[]           EnablesGood              // Added by E -- having a bldg gives a city a good
+	Record Civilisation[]       CivilisationOnly 
+	Record Feat[]               NeedsFeatToBuild         // Implemented by E
+	Record Feat[]               NeedsAnyPlayerFeatToBuild              // Implemented by E
+	Record Building[]           ConflictsWithBuilding    // FU for SectarianHappiness
+	Record Building[]           ExcludedByBuilding       // CantBuild if have this building
+	Record Government[]         ExcludedByGovernmentType // Destroyed if not of this government
+	Record Wonder[]             PrerequisiteWonder       // Added by E to limit units to cities with certain wonders
+	Record Wonder[]             ExcludedByWonder         // To prevent some units being built
+	Bit(Int)                    NeedsPopCountToBuild     // Added by E
+	Bit(Int)                    PopCountBuildLimit       // Added by E
+
+	Record Resource[]           RequiresGood             // Added by E -- having a bldg gives a city a good
+	Record Resource[]           ProducesGood             // Added by E -- having a bldg gives a city a good
+	Bit(Int)                    SquaredBorderRadius      // FU added by E
+	Bit(Int)                    IntBorderRadius          // FU added by E
+	Record TerrainImprovement[] ShowOnMap                // FU
+	Record TerrainImprovement[] ShowOnMapRadius          // FU
+	Bit(Record MapIcon)         ShowCityIconTop          // Like show on map but put on top of city like icons
+	Bit(Record MapIcon)         ShowCityIconBottom       // Like show on map but puts the graphic behind the city 
+	Bit(Record MapIcon)         IsReligionIcon           // Displays city religion icon
+
+	Bit(Float)                  TreasuryInterest         // FU
+	Bit                         CantSell                 // Some Buildings Cant Be Sold
+	Bit(Int)                    DisbandsCitySettlerNum   //
+	Bit                         CreatesMiltiaUnit        // EMOD for militia code 10-05-2006
+	Record Building[]           ActualBuildingEverywhere // FU
+
+
+	Int ProductionCost
+	Int Upkeep
+	Bit(Int)   GoldPerCity                 // Add/subtract gold based on player's number of cities by E
+	Bit(Int)   GoldPerUnit                 // Add/subtract gold based on player's number of units by E 
+	Bit(Int)   GoldPerUnitSupport          // coefficient applied to gold hunger, readiness, and govt coefficient
+	Bit(Int)   GoldPerUnitReadiness        // Add/subtract gold based on player's number of units multiplied by readiness level by E
+	Bit(Int)   UpkeepPerUnit               // FU added by E 
+	Bit(Int)   UpkeepPerUnitWagesReadiness // FU added by E 
+	Bit(Int)   UpkeepPerCity               // FU added by E 
+	Bit(Int)   UpkeepPerCitySq             // FU added by E
+	Bit(Int)   NewPopLimit                 // FU added by E
+	Bit(Int)   UpkeepPerUnitSupport
+	Bit        ProductionCostPopModifier   //added by E multiples productioncost to the population size. Its harder to modernize an old, crowded city
+
+	# flags
+	Bit        Capitol
+	Bit(Float) DefendersPercent
+	Bit(Int)   HappyInc
+	Bit        DoubleTelevangelists
+	Bit(Float) ProductionPercent
+	Bit(Float) FoodPercent
+	Bit(Float) CommercePercent
+	Bit(Float) SciencePercent
+	Bit(Int)   IncreaseBaseOvercrowding
+	Bit(Int)   IncreaseMaxPopulation
+	Bit(Float) FoodVat
+	Bit        Airport
+	Bit        NoUnhappyPeople
+	Bit        NoRushBuyPenalty
+	Bit(Float) LowerCrime
+	Bit(Float) PreventConversion
+	Bit(Float) PreventSlavery
+	Bit        AllowGrunts
+	Bit(Float) LowerPeaceMovement
+	Bit(Int)   GoldPerCitizen
+	Bit        ProtectFromNukes
+	Bit(Float) ProtectFromBioAgents
+	Bit(Float) ProtectFromNanoVirus
+	Bit        Television
+	Bit        CityWalls
+	Bit        IsReligious
+	Bit        ForceField
+	Bit        CantBuildInSea
+	Bit        CantBuildOnLand
+	Bit        Cathedral
+	Bit        Brokerage
+	Bit        NuclearPlant
+	Bit(Float) SciencePerPop
+	Bit(Int)   RaiseOvercrowdingLevel
+	Bit(Int)   RaiseMaxPopulation
+	Bit(Int)   StarvationProtection
+	Bit        EmbassiesEverywhereEvenAtWar
+
+	Bit        CoastalBuilding            // DW - Added to fix bug #895
+	Bit        OnePerCiv                  // EMOD implement 2-14-2006
+	Bit(Int)   IncreaseHP                 // EMOD - increase HP of all current units
+	Bit        EnablesAllVeterans         // EMOD - makes any unit veteran 6-5-2007
+	Bit        EnablesLandVeterans        // EMOD - makes land units veterans 6-5-2007
+	Bit        EnablesSeaVeterans         // EMOD - makes sea units veterans 6-5-2007
+	Bit        EnablesAirVeterans         // EMOD - makes air units veterans 6-5-2007 
+
+	Struct BuildingFeat {                 // From feats implemented by E 2-24-2006
+		Record Building Building
+		Bit(Int) Num
+		Bit(Int) PercentCities
+	}
+
+	Bit(struct BuildingFeat) BuildingFeat // From feats implemented by E 2-24-2006
+
+	Bit(Float) OffenseBonusLand
+	Bit(Float) OffenseBonusWater
+	Bit(Float) OffenseBonusAir
+
+	Bit(Float) PopulationPollutionPercent
+	Bit(Float) ProductionPollutionPercent
+	Bit(Float) PollutionAmount
+
+	Bit(File) ShowAsIcon                  // tiledraw icon file?
+
+	#Energy Code
+	Bit(Int)   EnergyHunger
+	Bit(Int)   ProducesEnergy
+	Bit(Int)   EnergyHungerPerPop
+	Bit(Int)   ProducesEnergyPerPop
+
+//	Bit(Record Religion)        IsReligion		          // Identifies religion
+	Bit GLHidden
+}

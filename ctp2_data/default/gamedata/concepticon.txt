@@ -1,0 +1,257 @@
+#----------------------------------------------------------------------------
+#
+# Project      : Call To Power 2
+# File type    : Text file
+# Description  : Map icon database
+# Id           : $Id:$
+#
+#----------------------------------------------------------------------------
+#
+# Disclaimer
+#
+# THIS FILE IS NOT GENERATED OR SUPPORTED BY ACTIVISION.
+#
+# This material has been developed at apolyton.net by the Apolyton CtP2 
+# Source Code Project. Contact the authors at ctp2source@apolyton.net.
+#
+#----------------------------------------------------------------------------
+#
+# Modifications from the original Activision code:
+#
+# - Moved the map icons from the source code to this file. (23-Feb-2007 Martin Gühmann)
+# - Replaced the city slave icon by one that shows the color of the player
+#   that lost the slaves. (26-Jan-2008 Martin Gühmann)
+# - Added show city production icons (upc154/155). (25-Jun-2009 Maq)
+#
+#----------------------------------------------------------------------------
+
+MAPICON_BIODISEASE		"upc001.tga"
+MAPICON_NANODISEASE		"upc002.tga"
+MAPICON_CONVERSION		"upc003.tga"
+MAPICON_FRANCHISE		"upc004.tga"
+MAPICON_INJUNCTION		"upc005.tga"
+MAPICON_HERALD			"upc006.tga"
+MAPICON_UNHAPPY			"upc007.tga"
+
+MAPICON_BRACKET1		"upc008.tga"
+MAPICON_BRACKET2		"upc009.tga"
+MAPICON_BRACKET3		"upc010.tga"
+MAPICON_BRACKET4		"upc011.tga"
+
+MAPICON_HERALD2			"upc012.tga"
+MAPICON_HERALD3			"upc013.tga"
+MAPICON_HERALD4			"upc014.tga"
+MAPICON_HERALD5			"upc015.tga"
+MAPICON_HERALD6			"upc016.tga"
+MAPICON_HERALD7			"upc017.tga"
+MAPICON_HERALD8			"upc018.tga"
+MAPICON_HERALD9			"upc019.tga"
+
+MAPICON_PRODUCTION		"upc020.tga"
+
+MAPICON_FOOD			"upc021.tga"
+MAPICON_GOLD			"upc022.tga"
+
+MAPICON_FLAG			"upc023.tga"
+
+MAPICON_CIRCLE1			"upc024.tga"
+MAPICON_CIRCLE2			"upc025.tga"
+MAPICON_CIRCLE3			"upc026.tga"
+
+MAPICON_ANCIENT			"upc027.tga"
+MAPICON_RENAISSANCE		"upc028.tga"
+MAPICON_MODERN			"upc029.tga"
+MAPICON_GENETICS		"upc030.tga"
+
+MAPICON_DIAMOND			"upc031.tga"
+MAPICON_BUILDINGS		"upc032.tga"
+MAPICON_WONDER			"upc033.tga"
+MAPICON_UNITS			"upc034.tga"
+MAPICON_CITY			"upc035.tga"
+MAPICON_BUILDINGS2		"upc036.tga"
+MAPICON_WONDER2			"upc037.tga"
+MAPICON_UNITS2			"upc038.tga"
+
+MAPICON_SLAVE			"upc039a.tga"
+MAPICON_SLEEPINGUNITS		"upc040.tga"
+
+MAPICON_AIRPORT			"upc041.tga"
+MAPICON_UPRISING		"upc042.tga"
+MAPICON_WATCHFUL		"watchful.tga"
+
+MAPICON_POLLUTION		"upc044.tga"
+
+MAPICON_CARGO			"upc045.tga"
+MAPICON_ARMY			"upc046.tga"
+MAPICON_VETERAN			"upc047.tga"
+
+MAPICON_TARGET			"upc048.tga"
+MAPICON_HERALD10		"upc049.tga"
+MAPICON_HERALD11		"upc050.tga"
+MAPICON_HERALD12		"upc051.tga"
+
+# New Map Icons
+MAPICON_CAPITOL			"upc052-2.tga"
+# New borders as icons, but should be replaced with some internal drawing
+MAPICON_POLBORDERNW		"upc053.tga"
+MAPICON_POLBORDERNE		"upc054.tga"
+MAPICON_POLBORDERSW		"upc055.tga"
+MAPICON_POLBORDERSE		"upc056.tga"
+MAPICON_ELITE			"upc057.tga"
+
+MAPICON_PRODUCTIONNEW		"upc154-2.tga"
+#when city grows to double figures, so it left-aligns with pop figure
+MAPICON_PRODUCTIONNEWBIG	"upc155-2.tga"
+
+
+###############################################
+## NOTE: All the mapicons above this point   ##
+## are hardcoded, so don't modify the order. ##
+###############################################
+
+
+# The mind virusses: The religions
+MAPICON_JUDAISM			"JudaismCI.tga"
+MAPICON_BUDDHISM		"BuddhismCI.tga"
+MAPICON_ISLAM			"Islam.tga" #"IslamCI.tga"
+MAPICON_TAOISM			"TaoismCI.tga"
+MAPICON_CHRISTENDOM		"ChristianityCI.tga"
+MAPICON_CONFUSCIANISM		"ConfucianismCI.tga"
+MAPICON_HINDUISM		"HinduismCI.tga"
+MAPICON_COMMUNISM		"upc064.tga"
+MAPICON_UNICORNISM		"upc065.tga"
+MAPICON_PASTAFARIANISM		"upc066.tga"
+MAPICON_ZORASTORISM		"Zorastrian.tga" #"ZorastrianismCI.tga"
+MAPICON_HELLENISM		"GreekCI.tga"
+MAPICON_PHAROAHISM		"Egypt.tga"  #"EgyptianCI.tga"
+
+# Civilization flags
+# Names should be a little bit more descriptive
+MAPICON_BARBARIAN_FLAG		"upc067.tga"
+MAPICON_GREEK_FLAG		"upc068.tga"
+MAPICON_AMERICAN_FLAG		"upc069.tga"
+MAPICON_SCOTTISH_FLAG		"upc070.tga"
+MAPICON_IRISH_FLAG		"upc071.tga"
+MAPICON_ENGLISH_FLAG		"upc072.tga"
+MAPICON_NATIVE_AMERICAN_FLAG	"upc073.tga"
+MAPICON_GERMAN_FLAG		"upc074.tga"
+MAPICON_FRENCH_FLAG		"upc075.tga"
+MAPICON_JAPANESE_FLAG		"upc076.tga"
+MAPICON_CHINESE_FLAG		"upc077.tga"
+MAPICON_RUSSIAN_FLAG		"upc078.tga"
+MAPICON_SPANISH_FLAG		"upc079.tga"
+MAPICON_PORTUGUESE_FLAG		"upc080.tga"
+MAPICON_DUTCH_FLAG		"upc081.tga"
+MAPICON_VIKING_FLAG		"upc082.tga"
+MAPICON_ROMAN_FLAG		"upc083.tga"
+MAPICON_EGYPTIAN_FLAG		"upc084.tga"
+MAPICON_PERSIAN_FLAG		"upc085.tga"
+MAPICON_TURKISH_FLAG		"upc086.tga"
+MAPICON_PHOENICIAN_FLAG		"upc087.tga"
+MAPICON_WELSH_FLAG		"upc088.tga"
+MAPICON_CUBAN_FLAG		"upc089.tga"
+MAPICON_ZULU_FLAG		"upc090.tga"
+MAPICON_HEBREW_FLAG		"upc091.tga"
+MAPICON_ASSYRIAN_FLAG		"upc092.tga"
+MAPICON_INDIAN_FLAG		"upc093.tga"
+MAPICON_THAI_FLAG		"upc094.tga"
+MAPICON_POLYNESIAN_FLAG		"upc095.tga"
+MAPICON_INDONESIAN_FLAG		"upc096.tga"
+MAPICON_POLNISH_FLAG		"upc097.tga"
+MAPICON_INCAN_FLAG		"upc098.tga"
+MAPICON_MAYAN_FLAG		"upc099.tga"
+MAPICON_CANADIANS_FLAG		"upc100.tga"
+MAPICON_NIGERIAN_FLAG		"upc101.tga"
+MAPICON_KOREA_FLAG		"upc102.tga"
+MAPICON_BRAZILIAN_FLAG		"upc103.tga"
+MAPICON_AUSTRALIA_FLAG		"upc104.tga"
+MAPICON_MEXICAN_FLAG		"upc105.tga"
+MAPICON_ETHIOPIAN_FLAG		"upc106.tga"
+MAPICON_MONGOL_FLAG		"upc107.tga"
+MAPICON_NICARAGUAN_FLAG		"upc108.tga"
+MAPICON_AZTEC_FLAG		"upc109.tga"
+MAPICON_NUBIAN_FLAG		"upc110.tga"
+MAPICON_ARABIAN_FLAG		"upc111.tga"
+MAPICON_CARTHAGINIAN_FLAG	"upc112.tga"
+MAPICON_BABYLONIAN_FLAG		"upc113.tga"
+MAPICON_BYZANTINE_FLAG		"upc114.tga"
+MAPICON_AUSTRIAN_FLAG		"upc115.tga"
+MAPICON_SWEDISH_FLAG		"upc116.tga"
+MAPICON_CELTIC_FLAG		"upc117.tga"
+MAPICON_ITALIAN_FLAG		"upc118.tga"
+MAPICON_BANTU_FLAG		"upc119.tga"
+MAPICON_SLAVIC_FLAG		"upc120.tga"
+MAPICON_MINOAN_FLAG		"upc121.tga"
+MAPICON_HARAPPAN_FLAG		"upc137.tga"
+MAPICON_HITTITE_FLAG		"upc123.tga"
+MAPICON_ETRUSCAN_FLAG		"upc125.tga"
+MAPICON_ABORIGINE_FLAG		"upc126.tga"
+MAPICON_ARGENTINIAN_FLAG	"upc127.tga"
+MAPICON_KHMER_FLAG		"upc128.tga"
+MAPICON_MALIAN_FLAG		"upc129.tga"
+MAPICON_CONFEDERATE_FLAG	"upc130.tga"
+MAPICON_EUROPEAN_FLAG		"upc131.tga" 
+MAPICON_GREAT_BRITIAN_FLAG	"upc132.tga"
+MAPICON_MACEDONIAN_FLAG		"upc133.tga"
+MAPICON_CALIFORNIA_FLAG		"upc134.tga"
+MAPICON_NAZI_FLAG		"upc135.tga"
+MAPICON_GREAT_SOVIET_UNION_FLAG	"upc136.tga"
+MAPICON_PAKISTAN		"upc137.tga"
+MAPICON_JAMAICA_FLAG		"upc122.tga"
+MAPICON_SUMER_FLAG		"upc140.tga"
+MAPICON_KUSH_FLAG		"upc141.tga"
+MAPICON_KURD_FLAG		"upc142.tga"
+MAPICON_SWISS_FLAG		"upc143.tga"
+MAPICON_BELGIUM_FLAG		"upc144.tga"
+MAPICON_VENEZUELA_FLAG		"upc145.tga"
+MAPICON_NO_VIETNAM_FLAG		"upc146.tga"
+MAPICON_SO_VIETNAM_FLAG		"upc147.tga"
+MAPICON_PRUSSIA_FLAG		"upc148.tga"
+MAPICON_GERMAN_IMP_FLAG		"upc149.tga"
+MAPICON_RUSSIAN_IMP_FLAG	"upc150.tga"
+MAPICON_LYCIAN_FLAG		"upc151.tga"
+MAPICON_ARMENIA_FLAG		"upc153.tga"
+MAPICON_UKRAINIAN_FLAG		"upc156.tga"
+
+# City expansion?
+#MAPICON_URBANANC
+#MAPICON_URBANMED
+#MAPICON_URBANMOD
+#MAPICON_URBANSLUM
+
+# Visible wonders
+#MAPICON_WONDER1
+#MAPICON_WONDER2
+#MAPICON_WONDER3
+#MAPICON_WONDER4
+#MAPICON_WONDER5
+#MAPICON_WONDER6
+#MAPICON_WONDER7
+#MAPICON_WONDER8
+#MAPICON_WONDER9
+#MAPICON_WONDER10
+#MAPICON_WONDER11
+#MAPICON_WONDER12
+#MAPICON_WONDER13
+#MAPICON_WONDER14
+#MAPICON_WONDER15
+#MAPICON_WONDER16 # Only need 16 for call2civ mod
+#MAPICON_WONDER17
+#MAPICON_WONDER18
+#MAPICON_WONDER19
+#MAPICON_WONDER21
+#MAPICON_WONDER22
+#MAPICON_WONDER23
+#MAPICON_WONDER24
+#MAPICON_WONDER25
+#MAPICON_WONDER26
+#MAPICON_WONDER27
+#MAPICON_WONDER28
+#MAPICON_WONDER29
+#MAPICON_WONDER30
+#MAPICON_WONDER31
+#MAPICON_WONDER32 # Total number of wonders in ctp2 default game
+#MAPICON_WONDER33
+#MAPICON_WONDER34
+#MAPICON_WONDER35
+#MAPICON_MAX

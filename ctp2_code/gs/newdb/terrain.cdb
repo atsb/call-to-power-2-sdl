@@ -1,0 +1,148 @@
+#-----------------------------------------------------------------------------
+#
+#  Project      : Call To Power 2
+#  File type    : dbgen input
+#  Description  : Resource and terrain type descriptor
+#  Id           : $Id:$
+#
+#----------------------------------------------------------------------------
+#
+#  Disclaimer
+#
+#  THIS FILE IS NOT GENERATED OR SUPPORTED BY ACTIVISION.
+#
+#  This material has been developed at apolyton.net by the Apolyton CtP2 
+#  Source Code Project. Contact the authors at ctp2source@apolyton.net.
+#
+#-----------------------------------------------------------------------------
+#
+#  Modifications from the original Activision code:
+#
+#  - Added customized ruin hut graphics possibility. (Martin Gühmann)
+#  - Added CanUpgrade flag for terrain dependent upgrading (Dec 24th 2006 Martin Gühmann)
+#
+#-----------------------------------------------------------------------------
+
+Resource {
+	Int Gold
+	Int Food = 0
+	Int Production = 0
+	Int SpriteID
+	Float Probability
+	Bit CantTrade
+	Record Advance        VisibleAdvance     // Added by E FutureUse
+	Record Advance        AvailableAdvance   // Added by E; if you have advance then you can collect/trade it
+	Record Advance        VanishAdvance      // Added by E; if you have advance then you cant collect/trade it
+	Record Sound Sound
+	Record Icon Icon
+	Record Government[] GovernmentsModified
+
+	Bit(Float) ProductionPercent             // Added by E when a city has or buying a good it gets a bonus
+	Bit(Float) FoodPercent                   // Added by E when a city has or buying a good it gets a bonus
+	Bit(Float) CommercePercent               // Added by E when a city has or buying a good it gets a bonus
+	Bit(Float) SciencePercent                // Added by E when a city has or buying a good it gets a bonus
+	Bit(Float) EfficiencyOrCrime             // Added by E -=crime +=efficiency
+	Int        HappyInc          = 0         // Added by E when a city has or buying a good it gets a bonus
+	Int        TradeGold         = 0
+	Int        TradeFood         = 0
+	Int        TradeProduction   = 0
+	Int        TradeScience      = 0         // Unused
+	Int        AddPopulation	 = 0
+	Int        AddSlave			 = 0
+	
+	Bit IsBonusGood
+	Bit IsStrategicGood
+	Bit IsLuxuryGood
+	Bit AddsASlave							//New flag that adds a slave to a city for each turn
+
+	Int   EnergyHunger = 0
+	Int   ProducesEnergy = 0
+
+	Bit GLHidden
+	Bit CanUpgrade
+}
+	
+Terrain {
+	# Int                   TerrainType
+	Record Icon           Icon
+	Record Advance        AddAdvance
+	Record Advance        RemoveAdvance
+	Bit                   CanDie
+	Bit GLHidden
+
+	Struct TransformData {
+		Int Time
+		Int Materials
+	}
+
+	Bit(Struct TransformData) TransformAdd, TransformRemove
+
+	Struct Modifiers {
+		Int Score
+		Int Gold
+		Int DeadGold
+		Int Food
+		Int Shield
+		Bit(Int) Movement
+		Int Freight
+		Int Materials
+		Int Time
+		Float Defense
+		Int DeadFood
+		Int DeadShield
+		Bit CanUpgrade
+	}
+
+	Struct Modifiers EnvBase
+	Bit(Struct Modifiers) EnvCity
+	Bit(Struct Modifiers) EnvRiver
+	Bit(Int) HostileTerrainCost
+
+	Record Resource[0..4] Resources
+	Bit NoIndex
+
+	Bits MovementType {
+		Land,
+		Sea,
+		Air,
+		Mountain,
+		Trade,
+		ShallowWater,
+		Space
+	}
+
+	# Map record to the pseudo-enum (TERRAIN_*, not an enum any more)
+	Bits InternalType {
+		Forest,
+		Plains,
+		Tundra,
+		Glacier,
+		Grassland,
+		Desert,
+		Swamp,
+		Jungle,
+		Mountain,
+		Hill,
+		WaterShallow,
+		WaterDeep,
+		WaterVolcano,
+		WaterBeach,
+		WaterShelf,
+		WaterTrench,
+		WaterRift,
+		Dead,
+		BrownHill,
+		BrownMountain,
+		WhiteHill,
+		WhiteMountain,
+		WaterKelp,
+		WaterReef,
+		Special
+	}
+
+	# For gfx system use
+	Int TilesetIndex
+	# Added by Martin Gühmann to allow modders to costumize ruin/hut graphics
+	Int HutTilesetIndexA = 150
+	Int HutTilesetIndexB = 151
+}

@@ -1,0 +1,130 @@
+#-----------------------------------------------------------------------------
+#
+#  Project      : Call To Power 2
+#  File type    : dbgen input
+#  Description  : Government type descriptor
+#  Id           : $Id:$
+#
+#-----------------------------------------------------------------------------
+#
+#  Disclaimer
+#
+#  THIS FILE IS NOT GENERATED OR SUPPORTED BY ACTIVISION.
+#
+#  This material has been developed at apolyton.net by the Apolyton CtP2 
+#  Source Code Project. Contact the authors at ctp2source@apolyton.net.
+#
+#-----------------------------------------------------------------------------
+#
+#  Modifications from the original Activision code:
+#
+#  - IsAnarchy       : This creates barbarian rebels during anarchy. (E)
+#  - IsXenophobic    : Reduces the population of a city with a certain city style. (E)
+#  - CultureOnly     : Government only available if civ has certain citystyle. (E)
+#  - IsParliamentary : Government vetoes war like in Civ2. (E)
+#  - RiotLevelModifier : Some Govts could have varying riot levels (E) (FU)
+#
+#-----------------------------------------------------------------------------
+
+Government {
+	Float PositiveWorkdayCoef
+	Float NegativeWorkdayCoef
+	Int   WorkdayExpectation
+
+	Float PositiveWagesCoef
+	Float NegativeWagesCoef
+	Int   WagesExpectation
+
+	Float PositiveRationsCoef
+	Float NegativeRationsCoef
+	Int   RationsExpectation
+
+	Float KnowledgeCoef
+	Float PollutionCoef
+	Float PollutionUnhappyCoef
+
+	Float ConquestDistress
+	Float ConquestDistressDecay
+	Float EmpireDistanceScale
+	Int   MinEmpireDistance
+	Int   MaxEmpireDistance
+	Int   TooManyCitiesThreshold
+	Float TooManyCitiesCoefficient
+	Int   MaxMartialLawUnits
+	Float MartialLawEffect
+	Int   MartialLawThreshold
+
+	Int   AtHomeRadius
+	Float OverseasCoef
+
+	Float OverseasDefeatDecay
+	Float OverseasDefeatCoef
+	Float HomeDefeatDecay
+	Float HomeDefeatCoef
+
+	Float CrimeCoef
+	Int   CrimeOffset
+
+	Int   ProfessionalUnits
+	Int   TurnsToNewReadiness
+	Float ReadyPeaceCoef
+	Float ReadyPeaceHP
+	Float ReadyAlertCoef
+	Float ReadyAlertHP
+	Float ReadyWarCoef
+	Float ReadyWarHP
+
+	Float FoodCoef
+	Float GoldCoef
+	Float ProductionCoef
+	Float SupportCoef
+	Float DefenseCoef
+
+	Record Advance       EnableAdvance
+	Record Advance[0..5] ObsoleteAdvance
+	Record CityStyle[]   CultureOnly			// Added by E -- govt only if civ has certain citystyle
+	Bit(Record MapIcon)	 GovtIcon				// Display different capital icon? Or for diplomacy?
+
+	Record Icon Icon
+	Int   GrowthRank
+	Int   ProductionRank
+	Int   ScienceRank
+	Int   GoldRank
+	Int   MilitaryRank
+	Int   CommerceRank
+	Int   PollutionRank
+	Int   LoyaltyRank
+	Int   MartialLawRank
+
+	Float MaxScienceRate
+	Float UnitRushModifier
+	Float BuildingRushModifier
+	Float WonderRushModifier
+	Float EndGameRushModifier
+
+	Int   MaxIncomingTrade
+	Int   MaxOutgoingTrade
+	Float InfrastructureCoefficient
+	Float CapitalizationCoefficient
+	Int   WarDiscontentMaxUnits
+	Float WarDiscontentPerUnit
+
+	Bit   IsEcotopia
+	Int   ParliamentaryVoteChance = 0 // Added for future use
+	Bit   IsAnarchy                   // Added for future use
+	Bit   IsXenophobic                // Kills foreign population each turn
+	Bit   HasGulags                   // Changes pop to slaves each turn
+	Bit   IsCapitalist                // Adds merchants each turn
+	Bit   IsTechnocracy               // Adds scientists each turn
+	Bit   IsAgrarian                  // Adds farmers each turn
+	Bit   HasMindlessTelevision       // Adds entertainers each turn
+	Bit(Int)   RiotLevelModifier			  //Some govts could have lower or higher Riot Thresholds
+	Bit   GLHidden                    // Makes the db record disappear from the GL
+	
+
+	// The discovery of governments of the same rank 
+	// trigger different advice than higher ranked ones
+	Int   Rank
+	StringId SameRankAdvice
+	StringId HigherRankAdvice
+}

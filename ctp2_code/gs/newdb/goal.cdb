@@ -1,0 +1,146 @@
+#-----------------------------------------------------------------------------
+#
+#  Project      : Call To Power 2
+#  File type    : dbgen input
+#  Description  : Goals descriptor
+#  Id           : $Id:$
+#
+# ----------------------------------------------------------------------------
+#
+#  Disclaimer
+#
+#  THIS FILE IS NOT GENERATED OR SUPPORTED BY ACTIVISION.
+#
+#  This material has been developed at apolyton.net by the Apolyton CtP2 
+#  Source Code Project. Contact the authors at ctp2source@apolyton.net.
+#
+#-----------------------------------------------------------------------------
+#
+#  Modifications from the original Activision code:
+#
+#  - Added UngroupFirst & NoRollback Token
+#  - Added Bonuses depending on territory owner
+#  - Added IsVisible Bonus
+#  - Added IsWounded Bonus
+#  - Added TargetType:PetrolStation - April 30th 2005 Martin Gühmann
+#  - Added InVisionRangeBonus (25-Jan-2008 Martin Gühmann)
+#  - Added NoBarbarianBonus   (25-Jan-2008 Martin Gühmann)
+#  - Added CanAttackBonus     (25-Jan-2008 Martin Gühmann)
+#
+#-----------------------------------------------------------------------------
+
+Goal {
+	Bit NeedsEscort
+	Bit IsSally
+	Bit AvoidWatchfulCity                   // Do not target watchful cities
+	Bit ExecuteIncrementally                // Execute while undercommited
+	Bit NeverSatisfied                      // Retreat goals are never satisfied
+	Bit RemoveWhenComplete
+	Bit RallyFirst                          // Armies need to rally before going to target
+	Bit NoTransport                         // Do not use transports to satisfy this goal
+	Bit UnGroupFirst
+	Bit NoRollback
+	Bit HasTransportersOrNoCoastalCities    // The AI has to own transporters to persue this goal and needs coastal cities
+	Bit IsGlobalGoal
+	Bit NeedsRoom                           // Only consider if the target position has room
+	Bit InField                             // Only consider units in field
+
+	Bits SquadClass {
+		CanExplore,
+		CanAttack,
+		CanDefend,
+		HasZoc,
+		CanCaptureCity,
+		CanBombard,
+		Special,
+		Stealth,
+		CanTransport
+	}
+
+	Bits TargetType {
+		AttackUnit,
+		SpecialUnit,
+		SettleLand,
+		SettleSea,
+		City,
+		ChokePoint,
+		GoodyHut,
+		TradeRoute,
+		Improvement,
+		Unexplored,
+		Border,
+		Endgame,
+		PetrolStation,
+		Random
+	}
+
+	Bits TargetOwner {
+		Self,
+		Ally,
+		Neutral,
+		ColdEnemy,
+		HotEnemy,
+		NoContact
+	}
+
+	Record Order Execute
+
+	Int ThreatBonus
+	Int EnemyValueBonus
+	Int AlliedValueBonus
+	Int PowerBonus
+	Int DistanceToHomeBonus
+	Int DistanceToEnemyBonus
+	Int InHomeTerritoryBonus           = 0
+	Int NoOwnerTerritoryBonus          = 0
+	Int InEnemyTerritoryBonus          = 0
+	Int WoundedArmyBonus               = 0
+	Int NotVisibleBonus                = 0
+	Int InVisionRangeBonus             = 0
+	Int NoBarbarianBonus               = 0
+	Int CanAttackBonus                 = 0
+	Int SlaveryProtectionBonus         = 0
+	Int SmallCitySizeBonus             = 0
+	Int GarrisonBonus                  = 0
+
+	struct ConnectionBoni
+	{
+		Int LandToCloseCityConnectionBonus = 0
+		Int CloseCityConnectionBonus       = 0
+		Int SmallTargetEmpireBonus         = 0
+		Int SmallTargetEmpireSize          = 0
+		Int WeakestEnemyBonus              = 0
+	}
+	
+	Bit(struct ConnectionBoni) ConnectionBoni
+
+	Int ChokePointBonus
+	Int UnexploredBonus
+	Int ObsoleteArmyBonus
+	Int TreaspassingArmyBonus
+
+	// type of threat this goal follows through
+	Bits ThreatenType {
+		AttackCity,
+		Pirate,
+		SpecialAttackCity,
+		DestroyCity,
+		None
+	}
+
+	// amount of bonus to give for goals that follow through threats
+	Int ThreatenBonus
+
+	// type of force matching ratio to use
+	Bits ForceMatch {
+		Offensive,
+		Defensive,
+		StealthAttack,
+		Bombard,
+		Special,
+		Harass
+	}
+
+	// wonders of this type protect owner against this goal
+	Bit (Record Wonder) TargetProtectionWonder
+}
