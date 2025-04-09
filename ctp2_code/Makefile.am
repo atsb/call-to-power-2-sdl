@@ -90,6 +90,7 @@ ctp_ctp2_SOURCES = \
 	ctp/civapp.cpp \
 	ctp/display.cpp \
 	ctp/cifm.cpp \
+	ctp/config_reader.cpp \
 	gfx/layers/citylayer.cpp \
 	net/general/net_achievement.cpp \
 	net/general/net_action.cpp \
